@@ -30,7 +30,8 @@ public class CustomersSteps {
     }
 
     public void openAndSearch(String searchString) {
-        //TODO
+        openPage();
+        searchInput(searchString);
     }
 
     public void setMatchCase() {
@@ -38,7 +39,7 @@ public class CustomersSteps {
     }
 
     public void shouldContainLink(String link) {
-        //TODO
+        assertThat(page.containsLink(link), is(true));
     }
 
     public void clickOnClearButton() {
