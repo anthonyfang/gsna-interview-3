@@ -17,44 +17,36 @@ public class CustomersTest {
     }
 
     @Test
-    public void checkDefaultSearch() {
-        steps.openAndSearch("b");
+    public void TC_01_clearButtonTestPageObject() {
+        //GIVEN
+        steps.openAndSearchByName("Bondir");
+
+        //WHEN
+        steps.clearSearchParameters();
+
+        //THEN
         steps.checkIfTableContainsString("Alabaster");
     }
 
     @Test
-    public void checkNumberOfFindRowsInTableResumePageObject() {
-        steps.openPage();
-        steps.searchInput("b");
-        steps.checkIfTableResumeContainsText("Showing 2 of 3 customers");
-    }
-
-
-    @Test
-    public void matchCaseOptionPageObject() {
+    public void TC_02_matchCaseOptionPageObject() {
         //GIVEN
-        steps.openAndSearch("B");
+        steps.openAndSearchByName("B");
         //WHEN
-        steps.setMatchCase();
+        steps.setMatchCase(true);
         //THEN
-        steps.checkIfTableContainsString("Bondir");
-        steps.checkIfTableNotContainsString("Alabaster");
     }
 
     @Test
-    public void clearButtonTestPageObject() {
-        //GIVEN
-        steps.openPage();
-        steps.searchInput("Bondir");
-        steps.checkIfTableNotContainsString("Alabaster");
+    public void TC_03_checkDefaultSearch() {
+        steps.openAndSearchByName("b");
+        steps.checkIfTableContainsExpectedNumberOfRows("2");
+    }
 
-        //WHEN
-        steps.clickOnClearButton();
-
-        //THEN
+    @Test
+    public void TC_04_checkSearchColumn() {
+        steps.openAndSearchByEmail("office");
         steps.shouldContainLink("office@alabaster.com");
-        steps.checkIfTableContainsString("office@alabaster.com");
-        steps.checkIfTableContainsString("conatact@postimex.pl");
-        steps.checkIfTableContainsString("info@bond.ir");
+        steps.checkIfTableResumeContainsText("Showing 1 of 3 customers filtered by term \"office\" in Email column without match case.");
     }
 }

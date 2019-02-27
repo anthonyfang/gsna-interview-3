@@ -29,12 +29,24 @@ public class CustomersSteps {
         page.closePage();
     }
 
-    public void openAndSearch(String searchString) {
+    public void openAndSearchByName(String searchString) {
         openPage();
         searchInput(searchString);
     }
 
-    public void setMatchCase() {
+    public void openAndSearchByEmail(String searchString) {
+        //TODO
+    }
+
+    public void setMatchCase(boolean selected) {
+        //TODO
+    }
+
+    public void checkIfTableContainsExpectedNumberOfRows(String numberOfRows) {
+        //TODO
+    }
+
+    public void clearSearchParameters() {
         //TODO
     }
 
